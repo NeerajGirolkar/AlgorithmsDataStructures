@@ -2,14 +2,28 @@ package com.neeraj.datastructures.stack;
 
 import java.util.NoSuchElementException;
 
+/**
+ * @author Neeraj
+ * 
+ * Complexity of stack implemented using fixed size array:
+ * 		- push()	O(1)
+ * 		- pop()		O(1)
+ * 		- peek()	O(1)
+ * 		- search()	O(n)
+ *
+ */
 public class ArrayBasedStack implements Stack {
 	private Object[] array;
 	private int size;
 	
+	/* Constructor - Initialize a new array with fixed capacity */
 	public ArrayBasedStack(int capacity) {
 		array = new Object[capacity];
 	}
 
+	
+	/* 1) Check if the array is full. If full, then throw stack overflow.
+	   2) If not full, then add the element to the TOS */
 	@Override
 	public void push(Object item) {
 		if(array.length == size) {
@@ -18,20 +32,25 @@ public class ArrayBasedStack implements Stack {
 		array[size++] = item;
 	}
 
+	/* 1) Check if the array is empty. If empty, then throw underflow error.
+	   2) If not, then remove and return the element at TOS.
+	   3) Make the current index of array point to NULL */
 	@Override
 	public Object pop() {
 		if(size == 0) {
-			throw new NoSuchElementException("No items present in stack");
+			throw new NoSuchElementException("Stack Underflow!");
 		}
 		Object obj = array[size - 1];
 		array[--size] = null;
 		return obj;
 	}
 
+	/* 1) Check if the array is empty. If empty, then throw underflow error.
+	   2) If not, then remove and return the element at TOS */
 	@Override
 	public Object peek() {
 		if(array.length == 0) {
-			throw new NoSuchElementException("No items present in stack");
+			throw new NoSuchElementException("Stack Underflow!");
 		}
 		return array[size - 1];
 	}
@@ -43,6 +62,6 @@ public class ArrayBasedStack implements Stack {
 
 	@Override
 	public boolean isEmpty() {
-		return array.length == 0;
+		return size == 0;
 	}
 }

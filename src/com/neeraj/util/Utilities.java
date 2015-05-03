@@ -13,10 +13,11 @@ public class Utilities {
 		return randoms;
 	}
 	
-	/* 1) Random class in Java generates statistically distributed positive random numbers. 
+	/**
+	 * 1) Random class in Java generates statistically distributed positive random numbers. 
 	 * 2) To generate positive & negative numbers in equal proportion, subtract the number 
-	 *    that is half of the range of the numbers to generate. */
-	
+	 *    that is half of the range of the numbers to generate.
+	 */
 	public static int[] generatePositiveNegativeIntRandoms(int maxNumber){
 		int[] randoms = new int[maxNumber];
 		Random randomGenerator = new Random();
